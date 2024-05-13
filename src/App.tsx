@@ -3,9 +3,9 @@ import { Route, Routes } from "react-router-dom"
 import './App.css'
 
 // components
-import EventList from './components/EventList'
-import AddEvent from './components/AddEvent'
-import EventDetail from './components/EventDetail'
+import EventList from "./components/Event/EventList"
+import AddEvent from "./components/AddEvent"
+import EventDetail from "./components/Event/EventDetail"
 
 const App = () => {
   const [events, setEvents] = useState([])
@@ -23,3 +23,5 @@ const App = () => {
 }
 
 export default App
+
+
