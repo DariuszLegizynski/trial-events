@@ -1,27 +1,26 @@
-import { useState } from 'react'
 import { Route, Routes } from "react-router-dom"
-import './App.css'
+import "./App.css"
 
 // components
-import EventList from "./components/Event/EventList"
+import EventsList from "./components/Event/EventsList"
 import AddEvent from "./components/AddEvent"
-import EventDetail from "./components/Event/EventDetail"
+import EventDetails from "./components/Event/EventDetails"
 
 const App = () => {
-  const [events, setEvents] = useState([])
-
-  return (
-    <main>
-      <h1>Welcome to my App</h1>
-      <Routes>
-				<Route exact path="/" element={<EventList />} />
+	return (
+		<main>
+			<h1>Welcome to my App</h1>
+			<Routes>
+				<Route exact path="/" element={<EventsList />} />
 				<Route exact path="/add" element={<AddEvent />} />
-				<Route exact path="/event/:id" element={<EventDetail />} />
+				<Route exact path="/events/:id" element={<EventDetails />} />
 			</Routes>
-    </main>
-  )
+		</main>
+	)
 }
 
 export default App
+
+
 
 
