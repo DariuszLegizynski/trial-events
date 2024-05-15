@@ -1,5 +1,5 @@
 import { GET_EVENT_LOADING, GET_EVENT_SUCCESS, GET_EVENT_FAIL } from "./index"
-import { BASE_URL } from "../config"
+import { JSON_URL } from "../config"
 
 export const getEventDetails = idEvent => async dispatch => {
 	try {
@@ -7,7 +7,7 @@ export const getEventDetails = idEvent => async dispatch => {
 			type: GET_EVENT_LOADING,
 		})
 
-		const response = await fetch(`${BASE_URL}/events/${idEvent}`)
+		const response = await fetch(`${JSON_URL}/events/${idEvent}`)
 		const data = await response.json()
 
 		dispatch({

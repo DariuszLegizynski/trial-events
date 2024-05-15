@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
 // actions
 import { getEvents } from "../../actions/eventsActions"
@@ -21,6 +22,7 @@ const EventList = () => {
 	return (
 		<article>
 			<h2>Events</h2>
+			<Link to={"/add"}>Add new Event</Link>
 			{allEvents.loading && <p>Loading...</p>}
 			{allEvents.error && <p>Error: {allEvents.error}</p>}
 			<ul>
