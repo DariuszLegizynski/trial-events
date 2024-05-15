@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getEventDetails } from "../../actions/eventDetails"
-import { BASE_URL } from "../../config"
+import { JSON_URL } from "../../config"
 
 const EventDetail = () => {
 	const idEvent = useParams().id
@@ -25,7 +25,7 @@ const EventDetail = () => {
 			<p>{eventDetails.price}</p>
 			<p>{eventDetails.contactPhone}</p>
 			<p>{eventDetails.contactEmail}</p>
-			<img src={`${BASE_URL}/${eventDetails.thumbnail}`} alt="lalalala" width={400} height={300} />
+			<img src={`${JSON_URL}/${eventDetails.imagePath}`} alt="lalalala" width={400} height={300} />
 			<p>{eventDetails.eventType}</p>
 			<Link className="font-bold" to={"/"}>
 				Go Back
