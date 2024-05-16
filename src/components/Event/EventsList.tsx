@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
+import { AppDispatch } from "../../store"
+import { RootState } from "../../reducers/rootReducers"
 
 // actions
 import { getEvents } from "../../actions/eventsActions"
@@ -12,8 +14,8 @@ import { Event } from "../../types/Event"
 import EventsListCard from "./EventsListCard"
 
 const EventList = () => {
-	const dispatch = useDispatch()
-	const allEvents = useSelector(state => state.events)
+	const dispatch: AppDispatch = useDispatch()
+	const allEvents = useSelector((state: RootState) => state.events)
 
 	useEffect(() => {
 		dispatch(getEvents())

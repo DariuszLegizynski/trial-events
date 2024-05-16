@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const useFormattedDate = isoDateString => {
+const useFormattedDate = (isoDateString: string) => {
 	const [date, setDate] = useState("")
 	const [time, setTime] = useState("")
 

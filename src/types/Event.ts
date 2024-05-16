@@ -1,6 +1,6 @@
 export interface Event extends FormValues {
-	id: number | string
-	imagePath: string
+	id?: number | string
+	imagePath?: string
 }
 
 export interface FormValues {

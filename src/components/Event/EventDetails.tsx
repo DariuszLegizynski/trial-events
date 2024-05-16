@@ -4,15 +4,19 @@ import { useEffect } from "react"
 import { getEventDetails } from "../../actions/eventDetails"
 import { JSON_URL } from "../../config"
 import useFormattedDate from "../../hooks/useFormattedDate"
+import { AppDispatch } from "../../store"
+import { RootState } from "../../reducers/rootReducers"
 
 const EventDetail = () => {
 	const idEvent = useParams().id
 
-	const dispatch = useDispatch()
-	const getDetails = useSelector(state => state.eventDetails)
+	const dispatch: AppDispatch = useDispatch()
+	const getDetails = useSelector((state: RootState) => state.eventDetails)
 
 	useEffect(() => {
-		dispatch(getEventDetails(idEvent))
+		if (idEvent) {
+			dispatch(getEventDetails(idEvent))
+		}
 	}, [dispatch, idEvent])
 
 	const eventDetails = getDetails.eventDetails

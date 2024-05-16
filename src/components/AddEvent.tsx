@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
+import { AppDispatch } from "../store"
 
 import { addEvent } from "../actions/eventAdd"
 
@@ -10,9 +11,9 @@ import { Event, FormValues } from "../types/Event"
 
 const AddEvent = () => {
 	const [requestStatus, setRequestStatus] = useState("")
-	const fileInputRef = useRef()
+	const fileInputRef = useRef<HTMLInputElement | null>(null)
 
-	const dispatch = useDispatch()
+	const dispatch: AppDispatch = useDispatch()
 
 	const initialValues = {
 		title: "",
@@ -46,11 +47,11 @@ const AddEvent = () => {
 		eventType: Yup.string().oneOf(["culture", "sport", "health"]).required("Event Type is required"),
 	})
 
-	const handleSubmit = async (values: Event, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+	const handleSubmit = async (values: FormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
 		const date = new Date(`${values.date.split("-").reverse().join("-")}T${values.time}`)
 		const isoDate = date.toISOString()
 
-		const newValues = {
+		const newValues: Event = {
 			...values,
 			date: isoDate,
 		}
@@ -60,6 +61,7 @@ const AddEvent = () => {
 			setRequestStatus("Success")
 		} catch {
 			setRequestStatus("Failed")
+			return Promise.reject(new Error("Failed to add event"))
 		}
 		setSubmitting(false)
 	}
@@ -155,7 +157,7 @@ const AddEvent = () => {
 								<button type="button" className="rounded-full text-black bg-secondary py-1 px-2 my-3" onClick={() => fileInputRef.current?.click()}>
 									Choose File
 								</button>
-								<span className="pb-1">{fileInputRef.current?.files[0].name || "No file chosen"}</span>
+								<span className="pb-1">{fileInputRef.current?.files?.[0]?.name || "No file chosen"}</span>
 							</div>
 							<input
 								className="hidden"
@@ -163,7 +165,7 @@ const AddEvent = () => {
 								name="image"
 								type="file"
 								onChange={e => {
-									setFieldValue("image", e.currentTarget.files[0])
+									setFieldValue("image", e.currentTarget?.files?.[0])
 								}}
 							/>
 							<ErrorMessage className="pt-1.5 text-warning" name="image" component="div" />

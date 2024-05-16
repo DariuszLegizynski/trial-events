@@ -10,9 +10,9 @@ const App = () => {
 	return (
 		<main className="grid grid-cols-1 mx-auto max-w-[68rem]">
 			<Routes>
-				<Route exact path="/" element={<EventsList />} />
-				<Route exact path="/add" element={<AddEvent />} />
-				<Route exact path="/events/:id" element={<EventDetails />} />
+				<Route path="/" element={<EventsList />} />
+				<Route path="/add" element={<AddEvent />} />
+				<Route path="/events/:id" element={<EventDetails />} />
 			</Routes>
 		</main>
 	)

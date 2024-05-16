@@ -1,5 +1,6 @@
 import { GET_EVENT_LOADING, GET_EVENT_SUCCESS, GET_EVENT_FAIL } from "../actions/index"
 import { Event } from "../types/Event"
+import { ActionType } from "../types/ActionType"
 
 const initialState = {
 	eventDetails: {} as Event,
@@ -7,7 +8,7 @@ const initialState = {
 	error: null,
 }
 
-const eventDetailsReducer = (state = initialState, action) => {
+const eventDetailsReducer = (state = initialState, action: ActionType) => {
 	switch (action.type) {
 		case GET_EVENT_LOADING:
 			return {

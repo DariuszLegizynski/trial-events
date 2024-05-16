@@ -5,7 +5,9 @@ import { Dispatch } from "redux"
 
 export const addEvent = (newEvent: Event) => async (dispatch: Dispatch) => {
 	const imageFile = new FormData()
-	imageFile.append("image", newEvent.image)
+	if (newEvent.image instanceof Blob) {
+		imageFile.append("image", newEvent.image)
+	}
 
 	try {
 		const response = await fetch(`${IMAGE_UPLOAD_URL}/upload`, {
