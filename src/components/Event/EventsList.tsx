@@ -20,12 +20,14 @@ const EventList = () => {
 	}, [dispatch])
 
 	return (
-		<article>
-			<h2>Events</h2>
-			<Link to={"/add"}>Add new Event</Link>
+		<article className="max-w-[68rem]">
+			<h1 className="py-8">Events</h1>
+			<Link to={"/add"} className="cta">
+				Add new Event
+			</Link>
 			{allEvents.loading && <p>Loading...</p>}
 			{allEvents.error && <p>Error: {allEvents.error}</p>}
-			<ul>
+			<ul className="grid grid-cols-1 gap-4 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{allEvents.eventList.map((event: Event) => (
 					<EventsListCard key={event.id} event={event} />
 				))}

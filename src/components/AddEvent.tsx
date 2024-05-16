@@ -2,6 +2,8 @@ import { useState, useRef } from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+
 import { addEvent } from "../actions/eventAdd"
 
 const AddEvent = () => {
@@ -25,8 +27,12 @@ const AddEvent = () => {
 	const validationSchema = Yup.object({
 		title: Yup.string().required("Title is required"),
 		description: Yup.string().required("Description is required"),
-		date: Yup.string().required("Date is required"),
-		time: Yup.string().required("Time is required"),
+		date: Yup.string()
+			.matches(/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-(19|20)\d\d$/, "Invalid date format. Please use the following format: DD-MM-YYYY")
+			.required("Date is required"),
+		time: Yup.string()
+			.matches(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format. Please use the following format: HH:MM")
+			.required("Time is required"),
 		location: Yup.string().required("Location is required"),
 		price: Yup.string().required("Price is required"),
 		contactPhone: Yup.string().required("Contact Phone is required"),
@@ -35,8 +41,16 @@ const AddEvent = () => {
 	})
 
 	const handleSubmit = async (values, { setSubmitting }) => {
+		const date = new Date(`${values.date.split("-").reverse().join("-")}T${values.time}`)
+		const isoDate = date.toISOString()
+
+		const newValues = {
+			...values,
+			date: isoDate,
+		}
+
 		try {
-			dispatch(addEvent(values))
+			dispatch(addEvent(newValues))
 			setRequestStatus("Success")
 		} catch {
 			setRequestStatus("Failed")
@@ -125,6 +139,7 @@ const AddEvent = () => {
 						Clear
 					</button>
 					{requestStatus && <p>{requestStatus}</p>}
+					<Link to="/">&larr; Back</Link>
 				</Form>
 			)}
 		</Formik>

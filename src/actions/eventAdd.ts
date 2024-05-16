@@ -3,6 +3,7 @@ import { JSON_URL, IMAGE_UPLOAD_URL } from "../config"
 import { Event } from "../types/Event"
 
 export const addEvent = (newEvent: Event) => async dispatch => {
+	console.log(newEvent)
 	const imageFile = new FormData()
 	imageFile.append("image", newEvent.image)
 

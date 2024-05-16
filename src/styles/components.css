@@ -1,0 +1,56 @@
+h1,
+.h1 {
+	@apply text-3xl sm:text-4xl md:text-5xl xl:text-6xl;
+}
+
+h2,
+.h2 {
+	@apply text-2xl sm:text-3xl md:text-4xl xl:text-5xl;
+}
+
+h3,
+.h3 {
+	@apply text-lg sm:text-xl md:text-2xl xl:text-3xl;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  @apply text-white;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+
+p,
+.p {
+	@apply text-base sm:text-lg md:text-xl xl:text-2xl;
+}
+
+span {
+	@apply text-sm sm:text-base md:text-lg xl:text-xl;
+}
+
+button {
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+	font-weight: 500;
+}
+
+a {
+	all: unset;
+	cursor: pointer;
+}
+
+.cta {
+  @apply bg-contrast py-4 px-8 uppercase rounded-full text-white;
+}
