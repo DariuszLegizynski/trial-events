@@ -37,7 +37,7 @@ const EventDetail = () => {
 					{eventDetails.contactPhone}
 				</a>
 				<p className='text-start after:content-[":"]'>E-Mail</p>
-				<a href={`mailto:${eventDetails.contactEmail}`} className="p text-start cursor-pointer" onClick={handleEmailClick}>
+				<a href={`mailto:${eventDetails.contactEmail}`} className="p text-start cursor-pointer">
 					{eventDetails.contactEmail}
 				</a>
 			</div>
