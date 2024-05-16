@@ -51,6 +51,10 @@ a {
 	cursor: pointer;
 }
 
+input {
+	@apply focus-visible:border-none focus:border-none;
+}
+
 .cta {
   @apply bg-contrast py-4 px-8 uppercase rounded-full text-white w-fit;
 }

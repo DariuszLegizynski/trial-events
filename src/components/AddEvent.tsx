@@ -39,7 +39,7 @@ const AddEvent = () => {
 			.matches(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format. Please use the following format: HH:MM")
 			.required("Time is required"),
 		location: Yup.string().required("Location is required"),
-		price: Yup.string().required("Price is required"),
+		price: Yup.number().positive("Price must be a positive number").required("Price is required"),
 		contactPhone: Yup.string().required("Contact Phone is required"),
 		contactEmail: Yup.string().email("Invalid email").required("Contact Email is required"),
 		image: Yup.mixed().required("A picture is required"),
@@ -81,7 +81,7 @@ const AddEvent = () => {
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':'] text-start" htmlFor="eventType">
+							<label className="after:content-[':'] text-start text-white" htmlFor="eventType">
 								Event Type
 							</label>
 							<Field className="rounded-md min-w-[204px]" as="select" id="eventType" name="eventType">
