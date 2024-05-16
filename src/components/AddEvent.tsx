@@ -71,12 +71,12 @@ const AddEvent = () => {
 			<h1 className="mb-8">Add a new Event</h1>
 			<Formik<FormValues> initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
 				{({ isSubmitting, setFieldValue, resetForm }) => (
-					<Form className="grid gap-y-2 text-white">
+					<Form className="grid gap-y-2">
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="title">
+							<label className="after:content-[':'] text-white" htmlFor="title">
 								Title
 							</label>
-							<Field type="text" id="title" name="title" className="rounded-md" />
+							<Field type="text" id="title" name="title" className="rounded-md pl-2" />
 							<ErrorMessage className="pt-1.5 text-warning" name="title" component="div" />
 						</div>
 
@@ -84,7 +84,7 @@ const AddEvent = () => {
 							<label className="after:content-[':'] text-start" htmlFor="eventType">
 								Event Type
 							</label>
-							<Field className="rounded-md min-w-[194px]" as="select" id="eventType" name="eventType">
+							<Field className="rounded-md min-w-[204px]" as="select" id="eventType" name="eventType">
 								<option value="">Select Event Type</option>
 								<option value="culture">Culture</option>
 								<option value="sport">Sport</option>
@@ -94,70 +94,70 @@ const AddEvent = () => {
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="description">
+							<label className="after:content-[':'] text-white" htmlFor="description">
 								Description
 							</label>
-							<Field className="rounded-md" type="text" id="description" name="description" />
+							<Field className="rounded-md pl-2" type="text" id="description" name="description" />
 							<ErrorMessage className="pt-1.5 text-warning" name="description" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="date">
+							<label className="after:content-[':'] text-white" htmlFor="date">
 								Date
 							</label>
-							<Field className="rounded-md" type="text" id="date" name="date" />
+							<Field className="rounded-md pl-2" type="text" id="date" name="date" />
 							<ErrorMessage className="pt-1.5 text-warning" name="date" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="time">
+							<label className="after:content-[':'] text-white" htmlFor="time">
 								Time
 							</label>
-							<Field className="rounded-md" type="text" id="time" name="time" />
+							<Field className="rounded-md pl-2" type="text" id="time" name="time" />
 							<ErrorMessage className="pt-1.5 text-warning" name="time" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="location">
+							<label className="after:content-[':'] text-white" htmlFor="location">
 								Location
 							</label>
-							<Field className="rounded-md" type="text" id="location" name="location" />
+							<Field className="rounded-md pl-2" type="text" id="location" name="location" />
 							<ErrorMessage className="pt-1.5 text-warning" name="location" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="price">
+							<label className="after:content-[':'] text-white" htmlFor="price">
 								Price
 							</label>
-							<Field className="rounded-md" type="text" id="price" name="price" />
+							<Field className="rounded-md pl-2" type="text" id="price" name="price" />
 							<ErrorMessage className="pt-1.5 text-warning" name="price" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="contactPhone">
+							<label className="after:content-[':'] text-white" htmlFor="contactPhone">
 								Contact Phone
 							</label>
-							<Field className="rounded-md" type="text" id="contactPhone" name="contactPhone" />
+							<Field className="rounded-md pl-2" type="text" id="contactPhone" name="contactPhone" />
 							<ErrorMessage className="pt-1.5 text-warning" name="contactPhone" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="contactEmail">
+							<label className="after:content-[':'] text-white" htmlFor="contactEmail">
 								Contact Email
 							</label>
-							<Field className="rounded-md" type="text" id="contactEmail" name="contactEmail" />
+							<Field className="rounded-md pl-2" type="text" id="contactEmail" name="contactEmail" />
 							<ErrorMessage className="pt-1.5 text-warning" name="contactEmail" component="div" />
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="image">
+							<label className="after:content-[':'] text-white" htmlFor="image">
 								Add a Picture
 							</label>
 							<div className="flex flex-col items-center">
 								<button type="button" className="rounded-full text-black bg-secondary py-1 px-2 my-3" onClick={() => fileInputRef.current?.click()}>
 									Choose File
 								</button>
-								<span className="pb-1">{fileInputRef.current?.files?.[0]?.name || "No file chosen"}</span>
+								<span className="pb-1 text-white">{fileInputRef.current?.files?.[0]?.name || "No file chosen"}</span>
 							</div>
 							<input
 								className="hidden"
@@ -172,10 +172,10 @@ const AddEvent = () => {
 						</div>
 
 						<div className="flex flex-col items-center">
-							<label className="after:content-[':']" htmlFor="contactEmail">
+							<label className="after:content-[':'] text-white" htmlFor="contactEmail">
 								Image Alt Text
 							</label>
-							<Field className="rounded-md" type="text" name="imgAlt" />
+							<Field className="rounded-md pl-2" type="text" name="imgAlt" />
 							<ErrorMessage className="pt-1.5 text-warning" name="imgAlt" component="div" />
 						</div>
 						<section className="flex flex-col items-center gap-y-8 mt-16">
