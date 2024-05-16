@@ -1,9 +1,9 @@
 import { ADD_EVENT_SUCCESS, ADD_EVENT_FAIL, UPLOAD_FILE_SUCCESS, UPLOAD_FILE_FAIL } from "./index"
 import { JSON_URL, IMAGE_UPLOAD_URL } from "../config"
 import { Event } from "../types/Event"
+import { Dispatch } from "redux"
 
-export const addEvent = (newEvent: Event) => async dispatch => {
-	console.log(newEvent)
+export const addEvent = (newEvent: Event) => async (dispatch: Dispatch) => {
 	const imageFile = new FormData()
 	imageFile.append("image", newEvent.image)
 

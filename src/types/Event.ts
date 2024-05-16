@@ -1,15 +1,18 @@
-export interface Event {
+export interface Event extends FormValues {
 	id: number | string
-	name: string
-	date: string
-	location: string
-	imgAlt: string
-	eventType: string
+	imagePath: string
+}
+
+export interface FormValues {
 	title: string
-	price: number
 	description: string
+	date: string
+	time: string
+	location: string
+	price: number
 	contactPhone: string
 	contactEmail: string
-	imagePath: string
 	image?: File | null
+	imgAlt: string
+	eventType: string
 }

@@ -1,7 +1,8 @@
 import { GET_EVENT_LOADING, GET_EVENT_SUCCESS, GET_EVENT_FAIL } from "./index"
 import { JSON_URL } from "../config"
+import { Dispatch } from "redux"
 
-export const getEventDetails = idEvent => async dispatch => {
+export const getEventDetails = (idEvent: string) => async (dispatch: Dispatch) => {
 	try {
 		dispatch({
 			type: GET_EVENT_LOADING,

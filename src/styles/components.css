@@ -54,3 +54,11 @@ a {
 .cta {
   @apply bg-contrast py-4 px-8 uppercase rounded-full text-white w-fit;
 }
+
+.back-btn {
+  @apply bg-grey py-4 px-8 uppercase rounded-full text-white w-fit;
+}
+
+.clear-btn {
+  @apply bg-secondary py-4 px-8 uppercase rounded-full text-black w-fit;
+}

@@ -7,6 +7,7 @@ export default {
 				primary: "rgb(121,148,126)",
 				secondary: "rgb(244,240,234)",
 				contrast: "rgb(209,190,185)",
+				warning: "rgb(253, 224, 71)",
 				black: "hsl(5, 0%, 0%)",
 				white: "hsl(5, 0%, 100%)",
 				grey: "hsl(0, 5%, 50%)",

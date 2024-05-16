@@ -41,8 +41,8 @@ const EventDetail = () => {
 					{eventDetails.contactEmail}
 				</a>
 			</div>
-			<Link className="cta" to={"/"}>
-				&larr; Go Back
+			<Link className="back-btn" to={"/"}>
+				&larr; Back
 			</Link>
 		</article>
 	)

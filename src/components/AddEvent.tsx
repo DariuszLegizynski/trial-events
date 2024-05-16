@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 
 import { addEvent } from "../actions/eventAdd"
 
+import { Event, FormValues } from "../types/Event"
+
 const AddEvent = () => {
 	const [requestStatus, setRequestStatus] = useState("")
 	const fileInputRef = useRef()
@@ -18,10 +20,12 @@ const AddEvent = () => {
 		date: "",
 		time: "",
 		location: "",
-		price: "",
+		price: 0,
 		contactPhone: "",
 		contactEmail: "",
 		image: null,
+		imgAlt: "",
+		eventType: "",
 	}
 
 	const validationSchema = Yup.object({
@@ -38,9 +42,11 @@ const AddEvent = () => {
 		contactPhone: Yup.string().required("Contact Phone is required"),
 		contactEmail: Yup.string().email("Invalid email").required("Contact Email is required"),
 		image: Yup.mixed().required("A picture is required"),
+		imgAlt: Yup.string().required("Image alt text is required"),
+		eventType: Yup.string().oneOf(["culture", "sport", "health"]).required("Event Type is required"),
 	})
 
-	const handleSubmit = async (values, { setSubmitting }) => {
+	const handleSubmit = async (values: Event, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
 		const date = new Date(`${values.date.split("-").reverse().join("-")}T${values.time}`)
 		const isoDate = date.toISOString()
 
@@ -59,90 +65,143 @@ const AddEvent = () => {
 	}
 
 	return (
-		<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-			{({ isSubmitting, setFieldValue, resetForm }) => (
-				<Form>
-					<div>
-						<label htmlFor="title">Title</label>
-						<Field type="text" id="title" name="title" />
-						<ErrorMessage name="title" component="div" />
-					</div>
+		<>
+			<h1 className="mb-8">Add a new Event</h1>
+			<Formik<FormValues> initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+				{({ isSubmitting, setFieldValue, resetForm }) => (
+					<Form className="grid gap-y-2 text-white">
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="title">
+								Title
+							</label>
+							<Field type="text" id="title" name="title" className="rounded-md" />
+							<ErrorMessage className="pt-1.5 text-warning" name="title" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="description">Description</label>
-						<Field type="text" id="description" name="description" />
-						<ErrorMessage name="description" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':'] text-start" htmlFor="eventType">
+								Event Type
+							</label>
+							<Field className="rounded-md min-w-[194px]" as="select" id="eventType" name="eventType">
+								<option value="">Select Event Type</option>
+								<option value="culture">Culture</option>
+								<option value="sport">Sport</option>
+								<option value="health">Health</option>
+							</Field>
+							<ErrorMessage className="pt-1.5 text-warning" name="eventType" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="date">Date</label>
-						<Field type="text" id="date" name="date" />
-						<ErrorMessage name="date" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="description">
+								Description
+							</label>
+							<Field className="rounded-md" type="text" id="description" name="description" />
+							<ErrorMessage className="pt-1.5 text-warning" name="description" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="time">Time</label>
-						<Field type="text" id="time" name="time" />
-						<ErrorMessage name="time" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="date">
+								Date
+							</label>
+							<Field className="rounded-md" type="text" id="date" name="date" />
+							<ErrorMessage className="pt-1.5 text-warning" name="date" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="location">Location</label>
-						<Field type="text" id="location" name="location" />
-						<ErrorMessage name="location" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="time">
+								Time
+							</label>
+							<Field className="rounded-md" type="text" id="time" name="time" />
+							<ErrorMessage className="pt-1.5 text-warning" name="time" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="price">Price</label>
-						<Field type="text" id="price" name="price" />
-						<ErrorMessage name="price" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="location">
+								Location
+							</label>
+							<Field className="rounded-md" type="text" id="location" name="location" />
+							<ErrorMessage className="pt-1.5 text-warning" name="location" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="contactPhone">Contact Phone</label>
-						<Field type="text" id="contactPhone" name="contactPhone" />
-						<ErrorMessage name="contactPhone" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="price">
+								Price
+							</label>
+							<Field className="rounded-md" type="text" id="price" name="price" />
+							<ErrorMessage className="pt-1.5 text-warning" name="price" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="contactEmail">Contact Email</label>
-						<Field type="text" id="contactEmail" name="contactEmail" />
-						<ErrorMessage name="contactEmail" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="contactPhone">
+								Contact Phone
+							</label>
+							<Field className="rounded-md" type="text" id="contactPhone" name="contactPhone" />
+							<ErrorMessage className="pt-1.5 text-warning" name="contactPhone" component="div" />
+						</div>
 
-					<div>
-						<label htmlFor="image">Add a Picture</label>
-						<input
-							ref={fileInputRef}
-							name="image"
-							type="file"
-							onChange={e => {
-								setFieldValue("image", e.currentTarget.files[0])
-							}}
-						/>
-						<ErrorMessage name="image" component="div" />
-					</div>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="contactEmail">
+								Contact Email
+							</label>
+							<Field className="rounded-md" type="text" id="contactEmail" name="contactEmail" />
+							<ErrorMessage className="pt-1.5 text-warning" name="contactEmail" component="div" />
+						</div>
 
-					<button className="font-bold" type="submit" disabled={isSubmitting}>
-						Submit
-					</button>
-					<button
-						type="button"
-						onClick={() => {
-							setFieldValue("image", null)
-							resetForm()
-							if (fileInputRef.current) {
-								fileInputRef.current.value = ""
-							}
-						}}
-					>
-						Clear
-					</button>
-					{requestStatus && <p>{requestStatus}</p>}
-					<Link to="/">&larr; Back</Link>
-				</Form>
-			)}
-		</Formik>
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="image">
+								Add a Picture
+							</label>
+							<div className="flex flex-col items-center">
+								<button type="button" className="rounded-full text-black bg-secondary py-1 px-2 my-3" onClick={() => fileInputRef.current?.click()}>
+									Choose File
+								</button>
+								<span className="pb-1">{fileInputRef.current?.files[0].name || "No file chosen"}</span>
+							</div>
+							<input
+								className="hidden"
+								ref={fileInputRef}
+								name="image"
+								type="file"
+								onChange={e => {
+									setFieldValue("image", e.currentTarget.files[0])
+								}}
+							/>
+							<ErrorMessage className="pt-1.5 text-warning" name="image" component="div" />
+						</div>
+
+						<div className="flex flex-col items-center">
+							<label className="after:content-[':']" htmlFor="contactEmail">
+								Image Alt Text
+							</label>
+							<Field className="rounded-md" type="text" name="imgAlt" />
+							<ErrorMessage className="pt-1.5 text-warning" name="imgAlt" component="div" />
+						</div>
+						<section className="flex flex-col items-center gap-y-8 mt-16">
+							<button className="cta font-bold" type="submit" disabled={isSubmitting}>
+								Submit
+							</button>
+							<button
+								className="clear-btn"
+								type="button"
+								onClick={() => {
+									setFieldValue("image", null)
+									resetForm()
+									if (fileInputRef.current) {
+										fileInputRef.current.value = ""
+									}
+								}}
+							>
+								Clear
+							</button>
+							{requestStatus && <p>{requestStatus}</p>}
+							<Link to="/" className="back-btn">
+								&larr; Back
+							</Link>
+						</section>
+					</Form>
+				)}
+			</Formik>
+		</>
 	)
 }
 
