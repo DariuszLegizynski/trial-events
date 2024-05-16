@@ -3,9 +3,10 @@ export interface Event {
 	name: string
 	date: string
 	location: string
-	thumbnail: string
+	imgAlt: string
 	eventType: string
 	title: string
+	price: number
 	description: string
 	contactPhone: string
 	contactEmail: string

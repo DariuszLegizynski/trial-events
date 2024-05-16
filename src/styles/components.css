@@ -52,5 +52,5 @@ a {
 }
 
 .cta {
-  @apply bg-contrast py-4 px-8 uppercase rounded-full text-white;
+  @apply bg-contrast py-4 px-8 uppercase rounded-full text-white w-fit;
 }
