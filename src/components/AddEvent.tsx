@@ -182,6 +182,7 @@ const AddEvent = () => {
 							<button className="cta font-bold" type="submit" disabled={isSubmitting}>
 								Submit
 							</button>
+							{requestStatus && <p className="text-white">{requestStatus}</p>}
 							<button
 								className="clear-btn"
 								type="button"
@@ -195,7 +196,6 @@ const AddEvent = () => {
 							>
 								Clear
 							</button>
-							{requestStatus && <p>{requestStatus}</p>}
 							<Link to="/" className="back-btn">
 								&larr; Back
 							</Link>
