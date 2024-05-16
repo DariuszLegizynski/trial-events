@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getEventDetails } from "../../actions/eventDetails"
 import { JSON_URL } from "../../config"
+import useFormattedDate from "../../hooks/useFormattedDate"
 
 const EventDetail = () => {
 	const idEvent = useParams().id
@@ -16,11 +17,14 @@ const EventDetail = () => {
 
 	const eventDetails = getDetails.eventDetails
 
+	const { date, time } = useFormattedDate(eventDetails.date)
+
 	return (
 		<article>
 			<h1>{eventDetails.title}</h1>
 			<p>{eventDetails.description}</p>
-			<p>{eventDetails.date}</p>
+			<p>{date}</p>
+			<p>{time}</p>
 			<p>{eventDetails.location}</p>
 			<p>{eventDetails.price}</p>
 			<p>{eventDetails.contactPhone}</p>
