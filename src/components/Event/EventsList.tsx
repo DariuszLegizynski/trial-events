@@ -27,8 +27,8 @@ const EventList = () => {
 			<Link to={"/add"} className="cta">
 				Add new Event
 			</Link>
-			{allEvents.loading && <p>Loading...</p>}
-			{allEvents.error && <p>Error: {allEvents.error}</p>}
+			{allEvents.loading && <p className="mt-8 text-white">Loading...</p>}
+			{allEvents.error && <p className="mt-8 text-warning">Error: {allEvents.error}</p>}
 			<ul className="grid grid-cols-1 gap-4 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{allEvents.eventList.map((event: Event) => (
 					<EventsListCard key={event.id} event={event} />
