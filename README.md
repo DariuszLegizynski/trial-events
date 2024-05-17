@@ -10,8 +10,8 @@ Reactjs app made with:
 
 ## Starting the App
 
-# Run npm install inside the projects root directory
+### Run npm install inside the projects root directory
 $ npm install
 
-# serve with hot reload at localhost:3000
+### serve with hot reload at localhost:3000
 $ npm run dev
